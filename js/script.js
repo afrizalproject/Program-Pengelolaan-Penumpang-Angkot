@@ -36,3 +36,38 @@ var hapusPenumpang = function (namaPenumpang, penumpang) {
         }
     }
 }
+
+//membuat objek angkot
+function Angkot(sopir, trayek, kas, penumpang) {
+    this.sopir = sopir;
+    this.trayek = trayek;
+    this.kas = kas;
+    this.penumpang = penumpang;
+
+    this.penumpangNaik = function (namaPenumpang) {
+        this.penumpang.push(namaPenumpang);
+        return this.penumpang;
+    }
+
+    this.penumpangTurun = function (namaPenumpang, bayar) {
+        if (this.penumpang.length === 0) {
+            alert('angkot masih kosong');
+            return false;
+        }
+
+        for (let i = 0; i < this.penumpang.length; i++) {
+            if (this.penumpang[i] == namaPenumpang) {
+                this.penumpang[i] = undefined;
+                this.kas += bayar;
+                return this.penumpang;
+            } else if (penumpang[i] != namaPenumpang) {
+                console.log(namaPenumpang + ' tidak ditemukan dalam angkot');
+                return false;
+            }
+
+        }
+    }
+}
+
+var angkot1 = new Angkot('afrizal', ['ngoro', ' mojokerto'], 0, []);
+var angkot2 = new Angkot('yanto', ['ngoro', ' jombang'], 0, []);
